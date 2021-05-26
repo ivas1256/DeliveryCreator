@@ -1,0 +1,35 @@
+﻿<Window x:Class="DeliveryCreator.View.TNDataListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeliveryCreator.View"
+        mc:Ignorable="d"
+        Title="TNDataListWindow" Height="450" Width="800"
+        Loaded="Window_Loaded">
+    <Grid>
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Top">
+                <TextBlock Text="Поиск:" Margin="5"/>
+                <Button Content="Добавить" DockPanel.Dock="Right" Margin="5" Click="btn_add_Click"/>
+                <TextBox Margin="5" TextChanged="tb_search_TextChanged"/>
+            </DockPanel>
+
+            <DataGrid x:Name="regions_table" ItemsSource="{Binding Items, NotifyOnSourceUpdated=True}"
+                              AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"
+                              ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Отправитель" Binding="{Binding sender_full_name}"/>
+                    <!--<DataGridTextColumn Header="Получатель" Binding="{Binding cargo_to_name}"/>-->
+                </DataGrid.Columns>
+
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Изменить" Click="btn_edit_Click"/>
+                        <MenuItem Header="Удалить" InputGestureText="Delete" Click="btn_delete_Click"/>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+            </DataGrid>
+        </DockPanel>
+    </Grid>
+</Window>

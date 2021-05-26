@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="mainModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="Data Source=&quot;D:\Work Projects\DeliveryCreator\DeliveryCreator\bin\Debug\data.db&quot;" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="price_list">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="region_name" Type="varchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="price_before_10_kg" Type="decimal" Precision="53" Scale="0" Nullable="false" />
+          <Property Name="price_after_10_kg" Type="decimal" Precision="53" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="settings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="value" Type="varchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tn_data">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="sender_full_name" Type="varchar" MaxLength="2147483647" />
+          <Property Name="cargo_name" Type="varchar" MaxLength="2147483647" />
+          <Property Name="cargo_docs" Type="varchar" MaxLength="2147483647" />
+          <Property Name="transport_type" Type="varchar" MaxLength="2147483647" />
+          <Property Name="cargo_from_name" Type="varchar" MaxLength="2147483647" />
+          <Property Name="cargo_from_condition" Type="varchar" MaxLength="2147483647" />
+          <Property Name="cargo_from_manager_position" Type="varchar" MaxLength="2147483647" />
+          <Property Name="cargo_transporter_fio" Type="varchar" MaxLength="2147483647" />
+          <Property Name="cargo_to_name" Type="varchar" MaxLength="2147483647" />
+          <Property Name="transportation_condition" Type="varchar" MaxLength="2147483647" />
+          <Property Name="transporter_name" Type="varchar" MaxLength="2147483647" />
+          <Property Name="car_name" Type="varchar" MaxLength="2147483647" />
+          <Property Name="car_number" Type="varchar" MaxLength="2147483647" />
+          <Property Name="price_info" Type="varchar" MaxLength="2147483647" />
+          <Property Name="receiver_full_name" Type="varchar" MaxLength="2147483647" />
+        </EntityType>
+        <EntityContainer Name="mainModelStoreContainer">
+          <EntitySet Name="price_list" EntityType="Self.price_list" store:Type="Tables" />
+          <EntitySet Name="settings" EntityType="Self.settings" store:Type="Tables" />
+          <EntitySet Name="tn_data" EntityType="Self.tn_data" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DataContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Settings" EntityType="mainModel.Settings" />
+          <EntitySet Name="PriceList" EntityType="mainModel.PriceList" />
+          <EntitySet Name="TNData" EntityType="mainModel.TNData" />
+        </EntityContainer>
+        <EntityType Name="PriceList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="region_name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="price_before_10_kg" Type="Decimal" Nullable="false" Precision="53" Scale="0" />
+          <Property Name="price_after_10_kg" Type="Decimal" Nullable="false" Precision="53" Scale="0" />
+        </EntityType>
+        <EntityType Name="TNData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sender_full_name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="cargo_name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="cargo_docs" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="transport_type" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="cargo_from_name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="cargo_from_condition" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="cargo_from_manager_position" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="cargo_to_name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="transportation_condition" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="transporter_name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="car_name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="car_number" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="price_info" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="receiver_full_name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="cargo_transporter_fio" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="mainModelStoreContainer" CdmEntityContainer="DataContext">
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="mainModel.Settings">
+              <MappingFragment StoreEntitySet="settings">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Value" ColumnName="value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PriceList">
+            <EntityTypeMapping TypeName="mainModel.PriceList">
+              <MappingFragment StoreEntitySet="price_list">
+                <ScalarProperty Name="price_after_10_kg" ColumnName="price_after_10_kg" />
+                <ScalarProperty Name="price_before_10_kg" ColumnName="price_before_10_kg" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TNData">
+            <EntityTypeMapping TypeName="mainModel.TNData">
+              <MappingFragment StoreEntitySet="tn_data">
+                <ScalarProperty Name="cargo_transporter_fio" ColumnName="cargo_transporter_fio" />
+                <ScalarProperty Name="receiver_full_name" ColumnName="receiver_full_name" />
+                <ScalarProperty Name="price_info" ColumnName="price_info" />
+                <ScalarProperty Name="car_number" ColumnName="car_number" />
+                <ScalarProperty Name="car_name" ColumnName="car_name" />
+                <ScalarProperty Name="transporter_name" ColumnName="transporter_name" />
+                <ScalarProperty Name="transportation_condition" ColumnName="transportation_condition" />
+                <ScalarProperty Name="cargo_to_name" ColumnName="cargo_to_name" />
+                <ScalarProperty Name="cargo_from_manager_position" ColumnName="cargo_from_manager_position" />
+                <ScalarProperty Name="cargo_from_condition" ColumnName="cargo_from_condition" />
+                <ScalarProperty Name="cargo_from_name" ColumnName="cargo_from_name" />
+                <ScalarProperty Name="transport_type" ColumnName="transport_type" />
+                <ScalarProperty Name="cargo_docs" ColumnName="cargo_docs" />
+                <ScalarProperty Name="cargo_name" ColumnName="cargo_name" />
+                <ScalarProperty Name="sender_full_name" ColumnName="sender_full_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

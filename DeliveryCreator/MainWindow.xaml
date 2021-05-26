@@ -1,0 +1,137 @@
+﻿<Window x:Class="DeliveryCreator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeliveryCreator"
+        mc:Ignorable="d"
+        Title="MainWindow" Width="800" WindowStartupLocation="CenterScreen" SizeToContent="Height"
+        Loaded="Window_Loaded" Closed="Window_Closed">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="HorizontalAlignment" Value="Right"/>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="Height" Value="25"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+            <Style TargetType="DatePicker">
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+        </Grid.Resources>
+
+        <Menu>
+            <MenuItem Header="Прайс">
+                <MenuItem Header="Список" Click="btnPriceList_click"/>
+                <MenuItem Header="Добавить" Click="btnAddPriceList_click"/>
+            </MenuItem>
+            <MenuItem Header="Шаблоны ТН">
+                <MenuItem Header="Список" Click="btnPatterns_click"/>
+                <MenuItem Header="Добавить" Click="btnAddPattern_click"/>
+            </MenuItem>
+        </Menu>
+
+        <GroupBox Header="Настройки генерации" Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.4*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.4*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.4*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                
+                <Label Content="Шаг увеличения:"/>
+                <Label Content="Диапазон весов:" Grid.Row="1"/>
+                <TextBlock Text="Диапазон времени в ТН (часы):" Grid.Row="2" TextWrapping="Wrap"
+                           TextAlignment="Right"/>
+
+                <Label Content="От:" Grid.Column="1"/>
+                <Label Content="От:" Grid.Column="1" Grid.Row="1"/>
+                <Label Content="От:" Grid.Column="1" Grid.Row="2"/>
+
+                <TextBox Grid.Column="2" Text="{Binding Settings.MinStep, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Column="4" Text="{Binding Settings.MaxStep, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Settings.MinHour, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Row="2" Grid.Column="4" Text="{Binding Settings.MaxHour, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Label Content="До:" Grid.Column="3"/>
+                <Label Content="До:" Grid.Column="3" Grid.Row="1"/>
+                <Label Content="До:" Grid.Column="3" Grid.Row="2"/>
+
+                <TextBox Grid.Column="2" Grid.Row="1" Text="{Binding Settings.MinWeight, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Column="4" Grid.Row="1" Text="{Binding Settings.MaxWeight, UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
+        </GroupBox>
+
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.23*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Дата начала:"/>
+            <Label Content="Дата конца:" Grid.Row="1"/>
+            <Label Content="Общая сумма:" Grid.Row="2"/>
+            <Label Content="Начальный номер ТН:" Grid.Row="3"/>
+            <Label Content="Количество доставок:" Grid.Row="4"/>
+            <Label Content="Файл с получателями:" Grid.Row="6"/>
+            <Label Content="Шаблон ТН:" Grid.Row="7"/>
+
+            <DatePicker Grid.Column="1" SelectedDate="{Binding Settings.DateFrom, UpdateSourceTrigger=PropertyChanged}"/>
+            <DatePicker Grid.Column="1" Grid.Row="1" SelectedDate="{Binding Settings.DateTo, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Settings.TotalSum, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding Settings.StartingTNNum, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding Settings.ItemsCount, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <CheckBox Content="Количество доставок автоматически" Margin="5" Grid.Row="5" Grid.ColumnSpan="2"
+                              IsChecked="{Binding Settings.IsAutoItemsCount, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <DockPanel Grid.Row="6" Grid.Column="1">
+                <Button Content="Открыть" DockPanel.Dock="Right" Click="btn_browseFile_click"/>
+                <TextBox Text="{Binding RecipientsFileName, UpdateSourceTrigger=PropertyChanged,NotifyOnSourceUpdated=True}"/>
+            </DockPanel>
+
+            <ComboBox Grid.Column="1" Grid.Row="7" ItemsSource="{Binding TNs}"
+                      SelectedValuePath="id"
+                      SelectedValue="{Binding Settings.TNDataId, UpdateSourceTrigger=PropertyChanged}"
+                      DisplayMemberPath="sender_full_name"/>
+
+            <Button Content="Рассчитать" Grid.Row="8" Click="Button_Click"/>
+        </Grid>
+
+        <StatusBar Grid.Row="4">
+            <TextBlock x:Name="tb_status"/>
+        </StatusBar>
+    </Grid>
+</Window>
