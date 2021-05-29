@@ -33,14 +33,23 @@
           <Property Name="cargo_from_name" Type="varchar" MaxLength="2147483647" />
           <Property Name="cargo_from_condition" Type="varchar" MaxLength="2147483647" />
           <Property Name="cargo_from_manager_position" Type="varchar" MaxLength="2147483647" />
-          <Property Name="cargo_transporter_fio" Type="varchar" MaxLength="2147483647" />
           <Property Name="cargo_to_name" Type="varchar" MaxLength="2147483647" />
           <Property Name="transportation_condition" Type="varchar" MaxLength="2147483647" />
           <Property Name="transporter_name" Type="varchar" MaxLength="2147483647" />
           <Property Name="car_name" Type="varchar" MaxLength="2147483647" />
           <Property Name="car_number" Type="varchar" MaxLength="2147483647" />
+          <Property Name="cargo_transporter_fio" Type="varchar" MaxLength="2147483647" />
           <Property Name="price_info" Type="varchar" MaxLength="2147483647" />
           <Property Name="receiver_full_name" Type="varchar" MaxLength="2147483647" />
+          <Property Name="car_name1" Type="varchar" MaxLength="2147483647" />
+          <Property Name="car_name2" Type="varchar" MaxLength="2147483647" />
+          <Property Name="car_number1" Type="varchar" MaxLength="2147483647" />
+          <Property Name="car_number2" Type="varchar" MaxLength="2147483647" />
+          <Property Name="cargo_transporter_fio1" Type="varchar" MaxLength="2147483647" />
+          <Property Name="cargo_transporter_fio2" Type="varchar" MaxLength="2147483647" />
+          <Property Name="is_driver_1_active" Type="integer" Nullable="false" />
+          <Property Name="is_driver_2_active" Type="integer" Nullable="false" />
+          <Property Name="is_driver_3_active" Type="integer" Nullable="false" />
         </EntityType>
         <EntityContainer Name="mainModelStoreContainer">
           <EntitySet Name="price_list" EntityType="Self.price_list" store:Type="Tables" />
@@ -92,6 +101,15 @@
           <Property Name="price_info" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
           <Property Name="receiver_full_name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
           <Property Name="cargo_transporter_fio" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="car_name1" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="car_name2" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="car_number1" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="car_number2" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="cargo_transporter_fio1" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="cargo_transporter_fio2" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="is_driver_1_active" Type="Int64" Nullable="false" />
+          <Property Name="is_driver_2_active" Type="Int64" Nullable="false" />
+          <Property Name="is_driver_3_active" Type="Int64" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -120,6 +138,15 @@
           <EntitySetMapping Name="TNData">
             <EntityTypeMapping TypeName="mainModel.TNData">
               <MappingFragment StoreEntitySet="tn_data">
+                <ScalarProperty Name="is_driver_3_active" ColumnName="is_driver_3_active" />
+                <ScalarProperty Name="is_driver_2_active" ColumnName="is_driver_2_active" />
+                <ScalarProperty Name="is_driver_1_active" ColumnName="is_driver_1_active" />
+                <ScalarProperty Name="cargo_transporter_fio2" ColumnName="cargo_transporter_fio2" />
+                <ScalarProperty Name="cargo_transporter_fio1" ColumnName="cargo_transporter_fio1" />
+                <ScalarProperty Name="car_number2" ColumnName="car_number2" />
+                <ScalarProperty Name="car_number1" ColumnName="car_number1" />
+                <ScalarProperty Name="car_name2" ColumnName="car_name2" />
+                <ScalarProperty Name="car_name1" ColumnName="car_name1" />
                 <ScalarProperty Name="cargo_transporter_fio" ColumnName="cargo_transporter_fio" />
                 <ScalarProperty Name="receiver_full_name" ColumnName="receiver_full_name" />
                 <ScalarProperty Name="price_info" ColumnName="price_info" />

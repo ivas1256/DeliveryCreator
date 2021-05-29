@@ -47,36 +47,89 @@
         <TextBlock Text="Груз:" Grid.Row="1"/>
         <TextBlock Text="Сопроводительные документы на груз:" Grid.Row="2"/>
         <TextBlock Text="Параметры транспортного средства:" Grid.Row="3"/>
-        <!--<TextBlock Text="Адрес места погрузки:" Grid.Row="4"/>-->
         <TextBlock Text="Фактическое состояние груза:" Grid.Row="5"/>
         <TextBlock Text="Лицо от корого забирается груз:" Grid.Row="6"/>
-        <TextBlock Text="ФИО водителя:" Grid.Row="7"/>
+        <!--<TextBlock Text="ФИО водителя:" Grid.Row="7"/>-->
         <TextBlock Text="Адрес места погрузки:" Grid.Row="8"/>
         
         <TextBlock Text="Условия перевозки:" Grid.Row="9"/>
         <TextBlock Text="Пееревозчик:" Grid.Row="10"/>
-        <TextBlock Text="Транспортное средство:" Grid.Row="11"/>
-        <TextBlock Text="Рег. номер ТС:" Grid.Row="12"/>
+        <!--<TextBlock Text="Транспортное средство:" Grid.Row="11"/>
+        <TextBlock Text="Рег. номер ТС:" Grid.Row="12"/>-->
 
         <TextBlock Text="Стоимость услуги:" Grid.Row="13"/>
-        <!--<TextBlock Text="Организация перевозчика:" Grid.Row="14"/>-->
 
         <TextBox Grid.Column="1" Text="{Binding sender_full_name, UpdateSourceTrigger=PropertyChanged}" />
         <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding cargo_name, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding cargo_docs, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding transport_type, UpdateSourceTrigger=PropertyChanged}"/>
-        <!--<TextBox Grid.Column="1" Grid.Row="4" Text="{Binding cargo_from_name, UpdateSourceTrigger=PropertyChanged}"/>-->
         <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding cargo_from_condition, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox Grid.Column="1" Grid.Row="6" Text="{Binding cargo_from_manager_position, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox Grid.Column="1" Grid.Row="7" Text="{Binding cargo_transporter_fio, UpdateSourceTrigger=PropertyChanged}"/>
+        <!--<TextBox Grid.Column="1" Grid.Row="7" Text="{Binding cargo_transporter_fio, UpdateSourceTrigger=PropertyChanged}"/>-->
         <TextBox Grid.Column="1" Grid.Row="8" Text="{Binding cargo_to_name, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox Grid.Column="1" Grid.Row="9" Text="{Binding transportation_condition, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox Grid.Column="1" Grid.Row="10" Text="{Binding transporter_name, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox Grid.Column="1" Grid.Row="11" Text="{Binding car_name, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox Grid.Column="1" Grid.Row="12" Text="{Binding car_number, UpdateSourceTrigger=PropertyChanged}"/>
+        <!--<TextBox Grid.Column="1" Grid.Row="11" Text="{Binding car_name, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Column="1" Grid.Row="12" Text="{Binding car_number, UpdateSourceTrigger=PropertyChanged}"/>-->
         <TextBox Grid.Column="1" Grid.Row="13" Text="{Binding price_info, UpdateSourceTrigger=PropertyChanged}"/>
-        <!--<TextBox Grid.Column="1" Grid.Row="14" Text="{Binding receiver_full_name, UpdateSourceTrigger=PropertyChanged}"/>-->
 
+        <GroupBox Header="Водители" Grid.Row="14" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="CheckBox">
+                        <Setter Property="HorizontalAlignment" Value="Right"/>
+                    </Style>
+                </Grid.Resources>
+                
+
+                <CheckBox Content="Водитель 1 активен" IsChecked="{Binding is_driver_1_active, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="ФИО водителя 1:" Grid.Row="1"/>
+                <TextBlock Text="Транспортное средство 1:" Grid.Row="2"/>
+                <TextBlock Text="Рег. номер ТС 1:" Grid.Row="3"/>
+
+                <CheckBox Content="Водитель 2 активен" Grid.Row="4" IsChecked="{Binding is_driver_2_active, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="ФИО водителя 2:" Grid.Row="5"/>
+                <TextBlock Text="Транспортное средство 2:" Grid.Row="6"/>
+                <TextBlock Text="Рег. номер ТС 2:" Grid.Row="7"/>
+
+                <CheckBox Content="Водитель 3 активен" Grid.Row="8" IsChecked="{Binding is_driver_3_active, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="ФИО водителя 3:" Grid.Row="9"/>
+                <TextBlock Text="Транспортное средство 3:" Grid.Row="10"/>
+                <TextBlock Text="Рег. номер ТС 3:" Grid.Row="11"/>
+
+                <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding cargo_transporter_fio, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding car_name, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding car_number, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding cargo_transporter_fio1, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Column="1" Grid.Row="6" Text="{Binding car_name1, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Column="1" Grid.Row="7" Text="{Binding car_number1, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <TextBox Grid.Column="1" Grid.Row="9" Text="{Binding cargo_transporter_fio2, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Column="1" Grid.Row="10" Text="{Binding car_name2, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Column="1" Grid.Row="11" Text="{Binding car_number2, UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
+        </GroupBox>
+        
+        
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="15" Grid.Column="1">
             <Button Content="Сохранить" Margin="5" Click="btn_ok_Click"/>
             <Button Content="Отмена" Margin="5" Click="btn_cancel_Click"/>

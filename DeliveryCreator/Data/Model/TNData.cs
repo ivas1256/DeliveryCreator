@@ -19,7 +19,7 @@ namespace DeliveryCreator.Data.Model
         public string cargo_name { get; set; }
         public string cargo_docs { get; set; }
         public string transport_type { get; set; }
-        public string cargo_from_name { get; set; }//delete
+        public string cargo_from_name { get; set; }
         public string cargo_from_condition { get; set; }
         public string cargo_from_manager_position { get; set; }
         public string cargo_to_name { get; set; }
@@ -30,5 +30,14 @@ namespace DeliveryCreator.Data.Model
         public string price_info { get; set; }
         public string receiver_full_name { get; set; }
         public string cargo_transporter_fio { get; set; }
+        public string car_name1 { get; set; }
+        public string car_name2 { get; set; }
+        public string car_number1 { get; set; }
+        public string car_number2 { get; set; }
+        public string cargo_transporter_fio1 { get; set; }
+        public string cargo_transporter_fio2 { get; set; }
+        public long is_driver_1_active { get; set; }
+        public long is_driver_2_active { get; set; }
+        public long is_driver_3_active { get; set; }
     }
 }

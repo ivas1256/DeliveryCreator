@@ -129,9 +129,15 @@ namespace DeliveryCreator.Logic
             if (receiver == null)
                 priceList = db.PriceLists.GetByCityName(receivers.ElementAt(random.Next(1, receivers.Count - 1)).City);
 
+            var date = settings.DateFrom.AddDays(random.Next(range));
+            if(date.DayOfWeek == DayOfWeek.Saturday)
+                date = date.AddDays(2);
+            if (date.DayOfWeek == DayOfWeek.Sunday)
+                date = date.AddDays(1);
+
             var r = new DetalizationNode()
             {
-                Date = settings.DateFrom.AddDays(random.Next(range)),
+                Date = date,
                 PriceList = priceList,                
                 Receiver = receiver
             };
